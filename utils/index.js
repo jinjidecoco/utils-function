@@ -22,6 +22,27 @@ export const format = (n) => {
     }
 }
 
+3.移除数组的某一项 
+
+(1) 
+
+export const remove = (arr,el) => {
+  const i = arr.indexOf(el)
+  if(i > -1){
+    arr.splice(i,1)
+  } 
+}
+
+(2) Ts写法
+
+export const remove = <T>(arr: T[], el: T)   => {
+  const i = arr.indexOf(el)
+  if(i > -1){
+    arr.splice(i,1)
+  } 
+}
+
+
 
 
 
