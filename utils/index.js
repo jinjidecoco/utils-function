@@ -6,19 +6,19 @@ const randomNum = (min, max) => Math.floor(Math.random() * (max - min + 1)) + mi
 // 2.数字千分位分割
 
 const format = (n) => {
-    let num = n.toString();
-    let len = num.length;
-    if (len <= 3) {
-        return num;
-    } else {
-        let temp = '';
-        let remainder = len % 3;
-        if (remainder > 0) { // 不是3的整数倍
-            return num.slice(0, remainder) + ',' + num.slice(remainder, len).match(/\d{3}/g).join(',') + temp;
-        } else { // 3的整数倍
-            return num.slice(0, len).match(/\d{3}/g).join(',') + temp;
-        }
+  let num = n.toString();
+  let len = num.length;
+  if (len <= 3) {
+    return num;
+  } else {
+    let temp = '';
+    let remainder = len % 3;
+    if (remainder > 0) { // 不是3的整数倍
+        return num.slice(0, remainder) + ',' + num.slice(remainder, len).match(/\d{3}/g).join(',') + temp;
+    } else { // 3的整数倍
+        return num.slice(0, len).match(/\d{3}/g).join(',') + temp;
     }
+  }
 }
 
 // 3.移除数组的某一项
@@ -132,6 +132,12 @@ getType(undefined) // 'undefined'
 getType(Symbol()) // 'symbol'
 getType(() => {}) // 'function'
 getType([]) // 'array'
+
+// 2.检测对象是否为空
+
+// const isEmptyObj = obj => Object.keys(obj).length === 0
+const isEmpty = obj => Reflect.ownKeys(obj).length === 0 && obj.constructor === Object
+
 
 
 
