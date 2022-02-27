@@ -76,7 +76,7 @@ randomStr() // '0.x3kez4oz2n' => x3kez4oz2n
 
 //第一次出现的位置等于当前索引
 let findUnique = arr => arr.filter((item,index) => arr.indexOf(item) === index) //方法一
-let findUnique = arr => arr.reduce((prev,cur)   => prev.includes(cur) ? prev:[...prev,cur],[]) //方法二
+let findUniques = arr => arr.reduce((prev,cur)   => prev.includes(cur) ? prev:[...prev,cur],[]) //方法二
 
 const removeRepeatArr = arr => [...new Set(arr)]
 
@@ -122,8 +122,12 @@ const scrolledToBottom = () => document.documentElement.clientHeight + window.sc
 
 // 其它
 // 1.获取变量类型
-const getType  = obj => Object.prototype.toString.call(obj).slice(8,-1)
+const getType  = obj => Object.prototype.toString.call(obj).slice(8,-1) //从8位到（倒数第一位不含）
 const getType2 = obj => Object.prototype.toString.call(obj).slice(8,-1).toLowerCase() //转为小写
+
+console.log(Object.prototype.toString.call({})) // [object Object]
+console.log(Object.prototype.toString.call([])) // [object Array]
+console.log(Object.prototype.toString.call(null)) // [object Null]
 
 getType(0) // 'number'
 getType('') // 'string'
