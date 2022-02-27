@@ -1,4 +1,4 @@
-
+// 一：日期处理
 // 1.生成指定范围随机数
 
 const randomNum = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
@@ -50,8 +50,37 @@ const dayOfYear = (date) => {
 
 // 5.时间格式化
 
-const timeFromDate  = (date)=> date.toTimeString().slice(0,8)
-console.log(timeFromDate(new Date()))
+const timeFromDate  = date => date.toTimeString().slice(0,8)
+// console.log(timeFromDate(new Date())) //10:06:43
+
+
+// 二：字符串处理
+
+// 1.字符串首字母大写 slice(start,end) end没有默认截取到最后一位
+const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
+
+// 2.字符串翻转
+const reverse = str => str.split('').reverse().join('')
+// reverse('hello')  ['h', 'e', 'l', 'l', 'o']=> ['o', 'l', 'l', 'e', 'h'] => 'olleh'
+
+// 3.随机字符串
+
+const randomStr = str => Math.random().toString(36).slice(2)
+randomStr() // '0.x3kez4oz2n' => x3kez4oz2n
+
+
+
+// 三、数组处理
+
+// 1.数组中去重
+
+//第一次出现的位置等于当前索引
+ let findUnique = arr => arr.filter((item,index) => arr.indexOf(item) === index) //方法一
+ let findUnique = arr => arr.reduce((prev,cur)   => prev.includes(cur) ? prev:[...prev,cur],[]) //方法二
+
+
+
+
 
 
 
