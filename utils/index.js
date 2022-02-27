@@ -75,8 +75,74 @@ randomStr() // '0.x3kez4oz2n' => x3kez4oz2n
 // 1.数组中去重
 
 //第一次出现的位置等于当前索引
- let findUnique = arr => arr.filter((item,index) => arr.indexOf(item) === index) //方法一
- let findUnique = arr => arr.reduce((prev,cur)   => prev.includes(cur) ? prev:[...prev,cur],[]) //方法二
+let findUnique = arr => arr.filter((item,index) => arr.indexOf(item) === index) //方法一
+let findUnique = arr => arr.reduce((prev,cur)   => prev.includes(cur) ? prev:[...prev,cur],[]) //方法二
+
+const removeRepeatArr = arr => [...new Set(arr)]
+
+// 2.数组是否为空
+
+const  isEmptyArr = arr  => Array.isArray(arr) && arr.length === 0  //true 空
+
+// 3.合并数组
+
+const mergeArr = (a,b) => a.concat(b)
+
+const mergeArr2 = (a,b) => [...a,...b]
+
+// 四、数字操作
+
+// 1.获得1组数的平均数
+
+//先求和再平均
+const average =(...args) => args.reduce( (prev,cur) => prev + cur )/args.length
+
+// 2.判断是否为偶数
+
+const isEven = num => num % 2 === 0
+
+// 3.获取两个整数间的随机数
+
+const getRandom = (min,max) => Math.floor(Math.random() * (max - min + 1)) + min
+
+
+// 浏览器操作
+
+// 1.获取选中的文本
+const getSelectedText = () => window.getSelection().toString()
+
+// 2.滚动到页面顶部
+const scrollToTop = () => window.scrollTo(0,0)
+
+// 3.是否滚动到页面底部
+
+
+const scrolledToBottom = () => document.documentElement.clientHeight + window.scrollY >= document.documentElement.scrollHeight
+
+
+// 其它
+// 1.获取变量类型
+const getType  = obj => Object.prototype.toString.call(obj).slice(8,-1)
+const getType2 = obj => Object.prototype.toString.call(obj).slice(8,-1).toLowerCase() //转为小写
+
+getType(0) // 'number'
+getType('') // 'string'
+getType(null) // 'null'
+getType(undefined) // 'undefined'
+getType(Symbol()) // 'symbol'
+getType(() => {}) // 'function'
+getType([]) // 'array'
+
+
+
+
+
+
+
+
+
+
+
 
 
 
