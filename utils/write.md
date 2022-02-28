@@ -113,6 +113,54 @@ function flatt(arr){
 
 #### 6.深浅拷贝
 
+##### 6.1 浅拷贝(只考虑对象)
+```javascript
+function shallowCopy(obj) {
+    if(typeof obj !=='object') return
+    let newObj = obj instanceof Array? []:{}
+    for(let key in obj) {
+        if(obj.hasOwnProperty(key)){
+            newObj[key] = obj[key]
+        }
+    }
+    return newObj
+}
+shallowCopy({a:1,b:3,c:4}) //{a:1,b:3,c:4}
+```
+
+##### 6.2浅拷贝(考虑多层对象)
+
+```javascript
+function shadowClone(obj){
+  let newObj = obj instanceof Array ?[]:{}
+  for(var key in obj){
+    if(obj.hasOwnProperty(key)){
+     newObj[key] = typeof(obj[key])==='object'? shadowClone(obj[key]):obj[key]
+    }
+  }
+  return newObj
+}
+
+```
+##### 6.3(部分复杂拷贝)
+(1) JSON.parse(JSON.stringify(obj)) //乞丐版(不考虑引用类型、拷贝函数、循环引用)
+
+```javascript
+function deepCopy(obj){
+  if(typeof obj === 'function'){
+    throw new TypeError('请传入正确的数据类型格式')
+  }
+  try {
+    let data = JSON.stringify(obj)
+    let newData = JSON.parse(data)
+    return newData
+  }catch(e) {
+    console.log(e)
+  }
+}
+```
+
+
 
 #### 7.类数组转真数组
 
