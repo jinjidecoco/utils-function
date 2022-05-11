@@ -143,6 +143,13 @@ getType([]) // 'array'
 const isEmpty = obj => Reflect.ownKeys(obj).length === 0 && obj.constructor === Object
 
 
+//3.检测是否是对象
+
+function isObject (obj) {
+  return obj !== null && typeof obj === 'object'
+}
+
+
 
 
 
